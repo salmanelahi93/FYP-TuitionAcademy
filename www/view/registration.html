@@ -1,0 +1,356 @@
+
+<ion-nav class="main">
+
+  <ion-header-bar class="bar-positive" id="head1">
+    <h1 class="title" id="head2">Tuition Academy</h1>
+  </ion-header-bar>
+
+
+  <ion-content >
+
+
+
+   <div id="account-form">
+
+     <!---------  Select Registration Start ----------->
+
+
+     <ion-list class="" >
+
+       <h4 style="color: white; text-align: center">Select Registration </h4>
+       <ion-radio   ng-model="regs"  value="tutor" id="tut"> Tutor </ion-radio>
+       <ion-radio   ng-model="regs"  value="student" id="std"> Student </ion-radio>
+
+
+       <!-- <ion-radio type="radio" ng-model="choice" name="reg" ng-value="true"> Student </ion-radio> -->
+
+     </ion-list><br>
+
+     <!---------  Select Registration End ----------->
+
+
+     <!---------  Tutor Registration Start ----------->
+
+
+     <div ng-if="regs == 'tutor'" id="student-reg" >
+       <h4 style="color: white">Personal Information: </h4>
+
+       <label class="item item-input" id="tut-name">
+         <span class="input-label"> Name: </span>
+         <input type="text" placeholder="Fname Lname" id="tutName">
+       </label>
+
+       <label class="item item-input" id="tut-age">
+         <span class="input-label"> Age: </span>
+         <input type="text" id="tutAge">
+       </label>
+
+       <label class="item item-input" id="tut-cell">
+         <span class="input-label"> Cell: </span>
+         <input type="text" placeholder="xxxx-xxxxxxx" id="tutCell">
+
+       </label>
+
+       <label class="item item-input item-select" id="tut-province" >
+         <div class="input-label">
+           Province:
+         </div>
+         <select ng-model="province" id="tutProvince">
+           <option ng-repeat="pro in provinces" value="{{ pro.value }}"> {{ pro.name }} </option>
+
+
+
+         </select>
+       </label>
+
+
+       <label class="item item-input item-select" id="tut-sindh" >
+
+         <div class="input-label">
+           City:
+         </div>
+         <select id="tutCity">
+           <option ng-if="province === 'sindh'" ng-repeat="city in SindhCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'punjab'" ng-repeat="city in PunjabCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'balochistan'" ng-repeat="city in BalochistanCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'kpk'" ng-repeat="city in KpkCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'baltistan'" ng-repeat="city in BaltistanCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'kashmir'" ng-repeat="city in KashmirCities" value="{{ city.value }}"> {{ city.name }} </option>
+
+         </select>
+       </label>
+
+
+
+
+
+       <label class="item item-input" id="tut-address">
+         <span class="input-label"> Address: </span>
+         <input type="text" id="tutAddress">
+       </label>
+
+       <label class="item item-input" id="tut-city">
+         <span class="input-label"> CNIC: </span>
+         <input type="text" placeholder="xxxxx-xxxxxxx-x" id="tutNIC">
+       </label>
+
+       <label class="item item-input" id="tut-email">
+         <span class="input-label"> Email: </span>
+         <input type="text" placeholder="abc@hotmail.com" id="tutEmail">
+       </label>
+
+       <label class="item item-input" id="tut-pword">
+         <span class="input-label"> Password: </span>
+         <input type="password" placeholder="" id="tutPword">
+       </label>
+
+
+
+       <br>
+
+       <h4 style="color: white">Academic Information: </h4>
+
+
+       <label class="item item-input item-select" id="tut-degree">
+         <div class="input-label">
+           Degree:
+         </div>
+         <select ng-model="degree" id="tutDegree">
+
+           <option ng-repeat="deg in Degree" value="{{deg.value}}"> {{ deg.name }} </option>
+
+
+
+         </select>
+       </label>
+
+
+
+
+       <label class="item item-input item-select" id="tut-matric">
+         <div class="input-label">
+           Discipline:
+         </div>
+         <select ng-model="discipline" id="tutDiscipline">
+
+           <option ng-if="degree === 'matric'" ng-repeat="mat in Matric" value="{{mat.value}}"> {{ mat.name }} </option>
+           <option ng-if="degree === 'inter'" ng-repeat="int in Inter" value="{{int.value}}"> {{ int.name }} </option>
+           <option ng-if="degree === 'bachelor'" ng-repeat="bac in Bachelor" value="{{bac.value}}"> {{ bac.name }} </option>
+           <option ng-if="degree === 'master'" ng-repeat="mas in Master" value="{{mas.value}}"> {{ mas.name }} </option>
+
+         </select>
+       </label>
+
+
+       <label class="item item-input item-select" id="tut-prog" >
+         <div class="input-label">
+           Program Completed:
+         </div>
+         <select ng-model="program" id="tutProg">
+
+           <option ng-repeat="prog in Program" value="{{prog.value}}"> {{ prog.name }} </option>
+
+         </select>
+       </label>
+
+
+
+        <label class="item item-input item-select" id="tut-class" ng-show="program === 'no'">
+          <div class="input-label" ng-if="degree === 'matric'">
+            Class:
+          </div>
+          <div class="input-label" ng-if="degree === 'inter'">
+            Year:
+          </div>
+          <div class="input-label" ng-if="degree === 'bachelor' && discipline !== 'commerce'">
+            Year:
+          </div>
+          <div class="input-label" ng-if="degree === 'master' && discipline !== 'commerce'">
+            Year:
+          </div>
+
+          <div class="input-label" ng-if="(degree === 'bachelor' || degree === 'master' ) && discipline === 'commerce'">
+            Part:
+          </div>
+
+          <select id="tutClass">
+
+            <option ng-if="degree === 'matric'" ng-repeat="class in Matric_class" value="{{class.value}}"> {{ class.name }} </option>
+            <option ng-if="degree === 'inter'" ng-repeat="class in Inter_class" value="{{class.value}}"> {{ class.name }} </option>
+            <option ng-if="degree === 'bachelor' && discipline !== 'commerce'" ng-repeat="class in Bachelor_class" value="{{class.value}}"> {{ class.name }} </option>
+            <option ng-if="degree === 'master' && discipline !== 'commerce'" ng-repeat="class in Master_class" value="{{class.value}}"> {{ class.name }} </option>
+            <option ng-if="(degree === 'bachelor' || degree === 'master' ) && discipline === 'commerce'" ng-repeat="class in Commerce_class" value="{{class.value}}"> {{ class.name }} </option>
+
+          </select>
+        </label>
+
+       <br>
+       <div style="text-align: center">
+         <button class="button icon-left button-royal" id="tutCreate" onclick="TutorRegistration()" ui-sref="login">
+           Create
+         </button>
+       </div>
+
+
+</div>
+
+     <!---------  Tutor Registration End ----------->
+
+
+     <!---------  Student Registration Start ----------->
+
+     <div ng-if="regs == 'student'" id="tutor-reg" >
+
+       <h4 style="color: white">Personal Information: </h4>
+     <label class="item item-input" id="std-name">
+       <span class="input-label"> Name: </span>
+       <input type="text" placeholder="Fname Lname" id="stdName">
+     </label>
+
+     <label class="item item-input" id="std-age">
+       <span class="input-label"> Age: </span>
+       <input type="text" id="stdAge">
+     </label>
+
+       <label class="item item-input" id="std-mobile">
+         <span class="input-label"> Cell: </span>
+         <input type="text" placeholder="xxxx-xxxxxxx" id="stdCell">
+       </label>
+
+
+       <label class="item item-input item-select" id="std-province" >
+       <div class="input-label">
+         Province:
+       </div>
+       <select ng-model="province" id="stdProvince">
+
+         <option ng-repeat="pro in provinces" value="{{ pro.value }}"> {{ pro.name }} </option>
+
+
+       </select>
+     </label>
+
+
+
+       <label class="item item-input item-select" id="std-sindh" >
+
+         <div class="input-label">
+           City:
+         </div>
+
+         <select id="stdCity">
+           <option ng-if="province === 'sindh'" ng-repeat="city in SindhCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'punjab'" ng-repeat="city in PunjabCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'balochistan'" ng-repeat="city in BalochistanCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'kpk'" ng-repeat="city in KpkCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'baltistan'" ng-repeat="city in BaltistanCities" value="{{ city.value }}"> {{ city.name }} </option>
+           <option ng-if="province === 'kashmir'" ng-repeat="city in KashmirCities" value="{{ city.value }}"> {{ city.name }} </option>
+         </select>
+       </label>
+
+
+
+
+       <label class="item item-input" id="std-address">
+         <span class="input-label"> Address: </span>
+         <input type="text" id="stdAddress">
+       </label>
+
+
+       <label class="item item-input" id="std-cnic">
+         <span class="input-label"> CNIC: </span>
+         <input type="text" placeholder="xxxxx-xxxxxxx-x" id="stdNIC">
+       </label>
+
+       <label class="item item-input" id="std-email">
+         <span class="input-label"> Email: </span>
+         <input type="text" placeholder="abc@hotmail.com" id="stdEmail">
+       </label>
+
+       <label class="item item-input" id="std-pword">
+         <span class="input-label"> Password: </span>
+         <input type="password" placeholder="" id="stdPword">
+       </label>
+
+
+       <br>
+       <h4 style="color: white">Academic Information: </h4>
+
+       <label class="item item-input item-select" id="std-degree">
+         <div class="input-label">
+           Degree:
+         </div>
+         <select ng-model="degree" id="stdDegree">
+
+           <option ng-repeat="deg in Degree" value="{{deg.value}}"> {{ deg.name }} </option>
+
+         </select>
+       </label>
+
+
+
+       <label class="item item-input item-select" id="std-matric">
+         <div class="input-label">
+           Discipline:
+         </div>
+         <select ng-model="discipline" id="stdDiscipline">
+
+           <option ng-if="degree === 'matric'" ng-repeat="mat in Matric" value="{{mat.value}}"> {{ mat.name }} </option>
+           <option ng-if="degree === 'inter'" ng-repeat="int in Inter" value="{{int.value}}"> {{ int.name }} </option>
+           <option ng-if="degree === 'bachelor'" ng-repeat="bac in Bachelor" value="{{bac.value}}"> {{ bac.name }} </option>
+           <option ng-if="degree === 'master'" ng-repeat="mas in Master" value="{{mas.value}}"> {{ mas.name }} </option>
+
+         </select>
+       </label>
+
+       <label class="item item-input item-select"  id="std-class">
+         <div class="input-label" ng-if="degree == null">
+           Class:
+         </div>
+         <div class="input-label" ng-if="degree === 'matric'">
+           Class:
+         </div>
+         <div class="input-label" ng-if="degree === 'inter'">
+           Year:
+         </div>
+         <div class="input-label" ng-if="degree === 'bachelor' && discipline !== 'commerce'">
+           Year:
+         </div>
+         <div class="input-label" ng-if="degree === 'master' && discipline !== 'commerce'">
+           Year:
+         </div>
+
+         <div class="input-label" ng-if="(degree === 'bachelor' || degree === 'master' ) && discipline === 'commerce'">
+           Part:
+         </div>
+
+         <select id="stdClass">
+
+           <option ng-if="degree === 'matric'" ng-repeat="class in Matric_class" value="{{class.value}}"> {{ class.name }} </option>
+           <option ng-if="degree === 'inter'" ng-repeat="class in Inter_class" value="{{class.value}}"> {{ class.name }} </option>
+           <option ng-if="degree === 'bachelor' && discipline !== 'commerce'" ng-repeat="class in Bachelor_class" value="{{class.value}}"> {{ class.name }} </option>
+           <option ng-if="degree === 'master' && discipline !== 'commerce'" ng-repeat="class in Master_class" value="{{class.value}}"> {{ class.name }} </option>
+           <option ng-if="(degree === 'bachelor' || degree === 'master' ) && discipline === 'commerce'" ng-repeat="class in Commerce_class" value="{{class.value}}"> {{ class.name }} </option>
+
+         </select>
+       </label>
+
+
+       <br>
+       <div style="text-align: center">
+         <button class="button icon-left button-royal" id="stdCreate" onclick="StudentRegistration()" ui-sref="login">
+           Create
+         </button>
+       </div>
+
+     </div>
+
+     <!-----------   Student Registration End  ------------->
+
+
+
+   </div>
+
+  </ion-content>
+
+</ion-nav>

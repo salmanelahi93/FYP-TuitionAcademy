@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$USER_HOME$/Desktop/IonicProject/www/js/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/css/starRating.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/css/style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/Firebase.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/view/abc.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/view/login.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/view/registration.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/view/student.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/view/studentProfile.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/view/tutlist.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/view/tutor.html" charset="UTF-8" />
+  </component>
+</project>

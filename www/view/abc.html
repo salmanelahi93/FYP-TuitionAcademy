@@ -1,0 +1,25 @@
+
+<ion-nav class="main1" ng-controller="tutorCtrl" style="background-color: lightblue">
+
+  <h1 class="head">Tuition Academy</h1>
+
+  <!-- <ion-header-bar class="bar-positive" id="head1">
+     <h1>Tuition Academy</h1>
+   </ion-header-bar> -->
+
+
+  <ion-content >
+
+    <div id="nic"></div>
+    <div> this is tutor page </div>
+
+
+  </ion-content>
+
+</ion-nav>
+
+
+<script>
+  document.getElementById("nic").innerHTML = localStorage.getItem("tutNic");
+</script>
+

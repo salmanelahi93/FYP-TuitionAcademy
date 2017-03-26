@@ -1,0 +1,169 @@
+/* Empty. Add your own CSS if you like */
+
+.main{
+  background: url(../img/background.jpg) no-repeat fixed;
+  /* background-color: #263239; */
+  -webkit-background-size: cover;
+}
+
+#head1{
+  background: linear-gradient(#1067A8,  #1067A8);
+  height: 60px;
+
+}
+
+
+#head2{
+  font-size: 30px;
+  font-family: 'Lobster', cursive;
+  height: 60px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+#but-tutor{
+  background: linear-gradient(darkblue, #1067A8, darkblue);
+  margin-top: 10%;
+  width: 200px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 30px;
+  border-width: 2px;
+  border-color: yellow;
+
+}
+
+#but-student{
+  background: linear-gradient(darkblue, #1067A8, darkblue);
+  margin-top: 0%;
+  width: 200px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 30px;
+  border-width: 2px;
+  border-color: yellow;
+
+}
+
+#but-signin{
+  background: linear-gradient(darkblue, #1067A8, darkblue);
+  margin: auto;
+  margin-top: 2%;
+  width: 90%;
+  font-size: 20px;
+  border-width: 2px;
+  border-color: yellow;
+  border-radius: 10px;
+  font-weight: bold;
+  height: 20px;
+  padding-top: 2px;
+}
+#but-signup{
+  /*background: linear-gradient(purple, #ce99ff);*/
+  background: linear-gradient( darkblue, #1067A8, darkblue);
+  margin: auto;
+  width: 90%;
+  margin-top: -2%;
+  font-size: 20px;
+  border-width: 2px;
+  border-color: yellow;
+  border-radius: 10px;
+  font-weight: bold;
+  height: 20px;
+  padding-top: 2px;
+}
+
+#top-design{
+  text-align: center;
+  padding-top: 15%;
+  color: white;
+}
+
+#urdu-quote{
+  font-size: 18px;
+  background-color: #737373;
+  padding: 10px;
+}
+
+#degree-cap{
+  width: 120px;
+  background-color: #737373;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+#login-form{
+  position: relative;
+  top: 20%;
+  width: 90%;
+  margin: auto;
+
+}
+
+#username{
+  border-radius: 10px 10px 0 0;
+}
+
+#password{
+  border-radius: 0 0 10px 10px;
+}
+
+#login{
+ margin-top: 10px;
+  height: 45px;
+  border-radius: 10px;
+  border-style: none;
+  background-color: #1067A8;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#forgot{
+  color: white;
+ margin-top: 20px;
+}
+
+#fb-login{
+  height: 45px;
+  border-radius: 30px;
+  width: 80%;
+  border-style: none;
+  margin: auto;
+  background-color: #5163A1;
+  color: white;
+  margin-top: 25px;
+  font-size: 18px;
+  font-weight: bold;
+padding-left: 20px;
+
+}
+#twitter-login{
+  height: 45px;
+  border-radius: 30px;
+  width: 80%;
+  border-style: none;
+  margin: auto;
+  background-color: #549FF7;
+  color: white;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 20px;
+
+}
+
+#account-form{
+  position: relative;
+  top: 10%;
+  width: 90%;
+  margin: auto;
+}
+
+#tutCreate, #stdCreate{
+ background-color: #1067A8;
+  width: 100px;
+}
+.search{
+  float: left;
+}

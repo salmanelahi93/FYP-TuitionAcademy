@@ -1,0 +1,78 @@
+<ion-nav class="main" >
+
+  <ion-header-bar class="bar-positive" id="head1">
+    <h1 class="title" id="head2">Tuition Academy</h1>
+  </ion-header-bar>
+
+  <ion-content>
+
+    <br><br>
+
+      <table>
+        <tr >
+          <td style="color: white">Searches:</td>
+          <td><input type="text"  placeholder="Name" style="margin-left: 5px; padding-left: 5px"></td>
+          <td><input type="text" placeholder="City" style="margin-left: 5px; padding-left: 5px"></td>
+        </tr>
+      </table>
+
+    <br><br>
+    <div class="list">
+
+      <div class="item item-avatar" ng-repeat="value in demo" ng-if="value.Profile == 'Tutor'" ng-click="abc(value)">
+
+        <img src="../img/my-image.png" style="">
+        <!--<h2 style="font-weight: bold" > {{ value.Name }} (<span>  {{ value.Degree }} - {{ value.Discipline }}   </span> ) </h2>
+        <h3 > {{ value.City }}  </h3>-->
+
+        <h2>  {{ value.Name }} </h2>
+        <h3> {{ value.City }} </h3>
+
+        <div class="row"  ng-click="$event.stopPropagation()">
+          <div class="col col-80">
+            <form id="ratingsForm">
+              <div class="stars">
+                <input type="radio" name="star" class="star-1" id="star-1" />
+                <label class="star-1" for="star-1">1</label>
+                <input type="radio" name="star" class="star-2" id="star-2" />
+                <label class="star-2" for="star-2">2</label>
+                <input type="radio" name="star" class="star-3" id="star-3" />
+                <label class="star-3" for="star-3">3</label>
+                <input type="radio" name="star" class="star-4" id="star-4" />
+                <label class="star-4" for="star-4">4</label>
+                <input type="radio" name="star" class="star-5" id="star-5" />
+                <label class="star-5" for="star-5">5</label>
+                <span></span>
+              </div>
+            </form>
+          </div>
+
+          <div class="col">
+            <button ng-click="shareAnywhere()">
+              <i class="icon ion-android-share-alt"></i>
+            </button>
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </ion-content>
+
+  <ion-footer-bar style="background-color: #1067A8">
+
+    <button class="button button-positive"  onclick="location.href='https://www.google.com/maps/dir//Pakistan/@30.082557,60.3305012,5z/data=!4m16!1m7!3m6!1s0x38db52d2f8fd751f:0x46b7a1f7e614925c!2sPakistan!3b1!8m2!3d30.375321!4d69.345116!4m7!1m0!1m5!1m1!1s0x38db52d2f8fd751f:0x46b7a1f7e614925c!2m2!1d69.345116!2d30.375321';">
+    Google Map
+  </button>
+
+    <button class="button button-positive" ng-click="scanBarcode()" >
+     Barcode Scan
+    </button>
+
+  </ion-footer-bar>
+
+</ion-nav>

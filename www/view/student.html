@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <link href="../css/font.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+
+  <style>
+
+    body{
+      background: url(../img/background.jpg) no-repeat fixed;
+      /* background-color: #263239; */
+      -webkit-background-size: cover;
+
+    }
+
+    #studentProfile{
+      margin-top: 50px;
+      color: white;
+    }
+
+    #head{
+      background: linear-gradient(#1067A8,  #1067A8);
+      height: 50px;
+      font-size: 30px;
+      font-family: 'Lobster', cursive;
+      text-align: center;
+      vertical-align: middle;
+      color: white;
+      padding-top: 12px;
+      margin: -8px;
+    }
+
+    #image, #imageUpload{
+      display: block;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    #login_button{
+      color: white;
+      background-color: #0040D0;
+      border-radius: 5px;
+      border-style: none;
+    }
+
+  </style>
+
+  <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    // TODO: Replace with your project's customized code snippet
+    var config = {
+      apiKey: "<API_KEY>",
+      authDomain: "<PROJECT_ID>.firebaseapp.com",
+      databaseURL: "https://tocipractise.firebaseio.com",
+      storageBucket: "gs://tocipractise.appspot.com",
+      messagingSenderId: "<SENDER_ID>"
+    };
+    firebase.initializeApp(config);
+
+  </script>
+
+</head>
+<body ng-controller="studentCtrl">
+
+<h1 id="head">Tuition Academy</h1>
+<br>
+<center><button id="login_button" ui-sref="login">Log out</button></center>
+
+<br><br>
+<img src="../img/Display%20Pic.jpg" id="image" style="height: 150px; width: 150px" >
+<input type="file" id="imageUpload" name="fileupload" style="width: 90px">
+
+
+<div id="studentProfile">
+
+  <table>
+    <tbody>
+
+    <tr>
+      <td>Name:</td>
+      <td><span id="name"></span> (<span id="profile"> </span>)</td>
+    </tr>
+
+    <tr>
+      <td>Email:</td>
+      <td><span id="email"></span></td>
+    </tr>
+
+    <tr>
+      <td>Cell:</td>
+      <td><span id="cell"></span></td>
+    </tr>
+
+    <tr>
+      <td>Age:</td>
+      <td><span id="age"></span></td>
+    </tr>
+
+    <tr>
+      <td>CNIC:</td>
+      <td><span id="nic"></span></td>
+    </tr>
+
+    <tr>
+      <td>Province:</td>
+      <td><span id="province"></span> <br></td>
+    </tr>
+
+    <tr>
+      <td>City:</td>
+      <td><span id="city"></span></td>
+    </tr>
+
+    <tr>
+      <td>Address: </td>
+      <td><span id="address"></span></td>
+    </tr>
+
+    <tr>
+      <td>Degree:</td>
+      <td><span id="degree"></span></td>
+    </tr>
+
+    <tr>
+      <td>Discipline:</td>
+      <td><span id="discipline"></span></td>
+    </tr>
+
+    <tr>
+      <td>Program Completed:</td>
+      <td><span id="isProgramCompleted"></span></td>
+    </tr>
+
+    <tr>
+      <td>Class:</td>
+      <td><span id="clas"></span></td>
+    </tr>
+
+    </tbody>
+  </table>
+
+
+</div>
+
+
+</body>
+</html>
+
+<script>
+
+  $scope.logout = function() {
+    alert("logout func working");
+    // instead of this
+    //$state.go("/tab/newpost");
+
+    // we should use this
+    $state.go("view.login");
+  };
+
+  document.getElementById("name").innerHTML = localStorage.getItem("Name");
+  document.getElementById("email").innerHTML = localStorage.getItem("Email");
+  document.getElementById("cell").innerHTML = localStorage.getItem("Cell");
+  document.getElementById("age").innerHTML = localStorage.getItem("Age");
+  document.getElementById("nic").innerHTML = localStorage.getItem("tutNic");
+  document.getElementById("province").innerHTML = localStorage.getItem("Province");
+  document.getElementById("city").innerHTML = localStorage.getItem("City");
+  document.getElementById("address").innerHTML = localStorage.getItem("Address");
+  document.getElementById("degree").innerHTML = localStorage.getItem("Degree");
+  document.getElementById("discipline").innerHTML = localStorage.getItem("Discipline");
+  document.getElementById("clas").innerHTML = localStorage.getItem("Class");
+  document.getElementById("profile").innerHTML = localStorage.getItem("Profile");
+
+  var email = localStorage.getItem("Email");
+
+  var imageUpload = document.getElementById("imageUpload");
+
+  var ref = new Firebase('https://tocipractise.firebaseio.com/');
+  imageUpload.addEventListener('change', function(e){
+
+    var file = e.target.files[0];
+    var storageRef = firebase.storage().ref(email + "/" + file.name);
+    window.fileName = file.name;
+
+    localStorage.setItem("fileName", file.name);
+    console.log(file.name);
+    console.log(storageRef.location.path);
+
+    var task = storageRef.put(file);
+
+    var storageRef = firebase.storage();
+    var file = localStorage.getItem("fileName");
+    window.fileName = localStorage.getItem("fileName");
+    var starsRef = storageRef.ref(email + '/' + file);
+
+    var Uid = localStorage.getItem("UserId");
+    var file_name = window.fileName;
+    ref.child(Uid).set({
+      FileName: file_name
+    });
+
+    // Get the download URL
+
+   starsRef.getDownloadURL().then(function(url) {
+      console.log(url);
+
+      document.getElementById('image').src = url;
+      localStorage.setItem("imageUrl", url);
+      // document.getElementById('fileDownload').href = url;
+      // document.getElementById('fileDownload').innerHTML = file;
+
+
+    }).catch(function(error) {
+
+      switch (error.code) {
+        case 'storage/object_not_found':
+          alert("File doesn't access");
+          break;
+
+        case 'storage/unauthorized':
+          alert("User doesn't have permission to access the file");
+          break;
+
+        case 'storage/canceled':
+          alert("User canceled the upload");
+          break;
+
+        case 'storage/unknown':
+          alert("Unknown error occurred, inspect the server response");
+          break;
+      }
+    });
+
+  });
+
+ // document.getElementById('image').src = localStorage.getItem("imageUrl");
+
+  console.log(localStorage.getItem("imageUrl"));
+
+
+</script>

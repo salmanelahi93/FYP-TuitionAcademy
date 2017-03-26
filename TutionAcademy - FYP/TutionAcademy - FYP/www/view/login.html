@@ -1,0 +1,38 @@
+<ion-nav class="main" >
+
+  <ion-header-bar class="bar-positive" id="head1">
+    <h1 class="title" id="head2">Tuition Academy</h1>
+  </ion-header-bar>
+
+
+  <ion-content >
+
+    <div id="login-form">
+      <label class="item item-input" id="username">
+        <span class="button-icon ion-person input-label"> &nbsp; Email </span>
+        <input type="text" id="email" ng-model="email" >
+      </label>
+      <label class="item item-input" id="password">
+        <span class="button-icon ion-locked input-label"> &nbsp; Password </span>
+        <input type="password" id="pword" ng-model="password">
+      </label>
+
+      <button id="login" class="button-block positive" onclick="Login()">Login</button>
+      <div id="forgot" class="text-center"> Forgot your password? </div>
+
+      <button id="fb-login" class="button icon-left button-block ion-social-facebook" >
+        Facebook Login
+      </button>
+      <button id="twitter-login" class="button icon-left button-block ion-social-twitter">
+        Twitter Login
+      </button>
+
+
+    </div>
+
+
+
+
+  </ion-content>
+
+</ion-nav>
