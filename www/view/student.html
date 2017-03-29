@@ -153,15 +153,6 @@
 
 <script>
 
-  $scope.logout = function() {
-    alert("logout func working");
-    // instead of this
-    //$state.go("/tab/newpost");
-
-    // we should use this
-    $state.go("view.login");
-  };
-
   document.getElementById("name").innerHTML = localStorage.getItem("Name");
   document.getElementById("email").innerHTML = localStorage.getItem("Email");
   document.getElementById("cell").innerHTML = localStorage.getItem("Cell");
